@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfhcrglk7orcb"]
+[gd_scene load_steps=6 format=3 uid="uid://bfhcrglk7orcb"]
 
 [ext_resource type="Script" uid="uid://h2resi86j2ko" path="res://Scenes/zombie_attack_line.gd" id="1_u854o"]
+[ext_resource type="Script" uid="uid://hu7ap6jeypdr" path="res://Scenes/spawn_line.gd" id="2_05ttr"]
+[ext_resource type="PackedScene" uid="uid://dkee7jpjl0upb" path="res://Scenes/Enemies/zombie.tscn" id="3_e7vvl"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pwvwa"]
 b = Vector2(1152, 0)
@@ -13,6 +15,10 @@ script = ExtResource("1_u854o")
 
 [node name="SpawnLine" type="Area2D" parent="."]
 position = Vector2(0, -100)
+script = ExtResource("2_05ttr")
+zombie = ExtResource("3_e7vvl")
+minSpawnTime = 5.0
+maxSpawnTime = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLine"]
 shape = SubResource("SegmentShape2D_pwvwa")

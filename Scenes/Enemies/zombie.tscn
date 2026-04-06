@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkee7jpjl0upb"]
+
+[ext_resource type="Texture2D" uid="uid://1420o23pjpme" path="res://icon.svg" id="1_673kn"]
+[ext_resource type="Script" uid="uid://dmiboe461ijea" path="res://Scenes/Enemies/zombieMovement.gd" id="1_ttf1p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ttf1p"]
+
+[node name="Zombie" type="CharacterBody2D"]
+script = ExtResource("1_ttf1p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_673kn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.180896, 3.180896)
+shape = SubResource("CircleShape2D_ttf1p")
