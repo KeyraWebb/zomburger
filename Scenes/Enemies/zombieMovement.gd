@@ -1,6 +1,28 @@
 extends CharacterBody2D
 
-@export var speed = 5
+@export var baseSpeed = 100
+@export var attack = 1
+@export var attackSpeed = 1
+var currSpeed
+var attacking = false
+var attackTimer
 
-func _process(_delta: float) -> void:
-	self.position.y = self.position.y + speed
+func _ready() -> void:
+	currSpeed = baseSpeed
+
+func _process(delta: float) -> void:
+	if attacking:
+		attackTimer -= delta
+		if attackTimer <= 0:
+			print("attack")
+			attackTimer = attackSpeed
+			
+func _physics_process(_delta: float) -> void:
+	velocity.y = currSpeed
+	move_and_slide()
+
+func Attack():
+	attacking = true
+	currSpeed = 0
+	attackTimer = attackSpeed
+	
