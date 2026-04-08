@@ -15,5 +15,3 @@ offset_right = 320.0
 offset_bottom = 47.0
 
 [node name="ZombieAttackLine" parent="." instance=ExtResource("2_yprpe")]
-
-[editable path="ZombieAttackLine"]

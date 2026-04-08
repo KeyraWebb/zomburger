@@ -21,5 +21,5 @@ func _process(delta: float) -> void:
 func SpawnEnemy(enemy):
 	var newEnemy = enemy.instantiate()
 	self.add_child(newEnemy)
-	var xpos = randi_range(0,line.shape.b.x)
+	var xpos = randi_range(line.shape.a.x,line.shape.b.x)
 	newEnemy.global_position = Vector2(xpos, self.global_position.y)

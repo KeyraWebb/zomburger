@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://y0mcrlv8ymfv" path="res://Scenes/player.gd" id="5_wcgpt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pwvwa"]
-b = Vector2(1152, 0)
+a = Vector2(50, 0)
+b = Vector2(1100, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u854o"]
 size = Vector2(1152, 50)
@@ -24,8 +25,6 @@ maxSpawnTime = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLine"]
 shape = SubResource("SegmentShape2D_pwvwa")
-
-[node name="Zombie" parent="SpawnLine" instance=ExtResource("3_e7vvl")]
 
 [node name="DamageArea" type="Area2D" parent="."]
 position = Vector2(0, 500)
