@@ -25,6 +25,8 @@ maxSpawnTime = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnLine"]
 shape = SubResource("SegmentShape2D_pwvwa")
 
+[node name="Zombie" parent="SpawnLine" instance=ExtResource("3_e7vvl")]
+
 [node name="DamageArea" type="Area2D" parent="."]
 position = Vector2(0, 500)
 collision_layer = 0
