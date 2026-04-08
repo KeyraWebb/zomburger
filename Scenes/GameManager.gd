@@ -1,3 +1,5 @@
+#handles main game information 
+
 extends Node2D
 
 @export var maxHealth = 100

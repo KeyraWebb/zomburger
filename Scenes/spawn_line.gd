@@ -1,3 +1,5 @@
+#handles spawning of zombies
+
 extends Area2D
 
 @onready var line = $CollisionShape2D
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
 		SpawnEnemy(zombie)
 		timeTillSpawn = randf_range(minSpawnTime,maxSpawnTime)
 	
-	
+#spawns an enemy within the spawn area	
 func SpawnEnemy(enemy):
 	var newEnemy = enemy.instantiate()
 	self.add_child(newEnemy)
