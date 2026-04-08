@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfhcrglk7orcb"]
+[gd_scene load_steps=7 format=3 uid="uid://bfhcrglk7orcb"]
 
 [ext_resource type="Script" uid="uid://h2resi86j2ko" path="res://Scenes/zombie_attack_line.gd" id="1_u854o"]
 [ext_resource type="Script" uid="uid://hu7ap6jeypdr" path="res://Scenes/spawn_line.gd" id="2_05ttr"]
 [ext_resource type="PackedScene" uid="uid://dkee7jpjl0upb" path="res://Scenes/Enemies/zombie.tscn" id="3_e7vvl"]
 [ext_resource type="Script" uid="uid://cgb675jtr2d2" path="res://Scenes/damage_area.gd" id="4_uki52"]
-[ext_resource type="Script" uid="uid://y0mcrlv8ymfv" path="res://Scenes/player.gd" id="5_wcgpt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pwvwa"]
 a = Vector2(50, 0)
@@ -35,8 +34,5 @@ script = ExtResource("4_uki52")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(576, 0)
 shape = SubResource("RectangleShape2D_u854o")
-
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("5_wcgpt")
 
 [connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
