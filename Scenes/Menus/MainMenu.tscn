@@ -15,36 +15,38 @@ grow_vertical = 2
 theme = ExtResource("1_tt5f1")
 script = ExtResource("2_853f1")
 
-[node name="Title" type="Label" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -43.5
-offset_top = 40.0
-offset_right = 43.5
-offset_bottom = 63.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-text = "Zomburger"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 529.0
-offset_top = 270.5
-offset_right = 623.0
-offset_bottom = 420.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -144.0
+offset_right = 210.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Zomburger"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Play" type="Button" parent="VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Play
 "
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
