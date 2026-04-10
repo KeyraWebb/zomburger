@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds466oxc4yvei"]
+[gd_scene load_steps=3 format=3 uid="uid://ds466oxc4yvei"]
 
-[ext_resource type="Theme" uid="uid://brn45uia7bj2s" path="res://Themes/Menu Theme.tres" id="1_ojehl"]
+[ext_resource type="Theme" uid="uid://brn45uia7bj2s" path="res://Themes/Menu Theme.tres" id="1_b7003"]
+[ext_resource type="Script" uid="uid://bi805p2fwiy51" path="res://Scenes/Menus/game_over.gd" id="2_frso8"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -9,7 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ojehl")
+theme = ExtResource("1_b7003")
+script = ExtResource("2_frso8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -45,3 +47,7 @@ text = "Main Menu"
 layout_mode = 2
 text = "Quit
 "
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

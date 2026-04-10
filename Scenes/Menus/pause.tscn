@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://copovl7ccbv4v"]
+[gd_scene load_steps=3 format=3 uid="uid://copovl7ccbv4v"]
 
-[ext_resource type="Theme" uid="uid://brn45uia7bj2s" path="res://Themes/Menu Theme.tres" id="1_o80xk"]
+[ext_resource type="Theme" uid="uid://brn45uia7bj2s" path="res://Themes/Menu Theme.tres" id="1_d36sb"]
+[ext_resource type="Script" uid="uid://cnyhyi3c06qq0" path="res://Scenes/Menus/pause.gd" id="2_lrvf4"]
 
 [node name="Pause" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_o80xk")
+theme = ExtResource("1_d36sb")
+script = ExtResource("2_lrvf4")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -45,3 +48,7 @@ text = "Main Menu"
 [node name="Quit" type="Button" parent="VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
