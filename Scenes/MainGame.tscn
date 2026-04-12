@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1cf1hvum4cob"]
+[gd_scene load_steps=6 format=3 uid="uid://b1cf1hvum4cob"]
 
 [ext_resource type="Script" uid="uid://bhyg3jpuk8hs2" path="res://Scenes/GameManager.gd" id="1_frf35"]
 [ext_resource type="PackedScene" uid="uid://copovl7ccbv4v" path="res://Scenes/Menus/pause.tscn" id="2_ybmw1"]
 [ext_resource type="PackedScene" uid="uid://bfhcrglk7orcb" path="res://Scenes/zombie_attack_line.tscn" id="2_yprpe"]
 [ext_resource type="PackedScene" uid="uid://ds466oxc4yvei" path="res://Scenes/Menus/game_over.tscn" id="3_321ql"]
+[ext_resource type="PackedScene" uid="uid://dffnwqbd5w7ni" path="res://Scenes/Player.tscn" id="5_321ql"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_frf35")
@@ -23,3 +24,6 @@ visible = false
 visible = false
 
 [node name="ZombieAttackLine" parent="." instance=ExtResource("2_yprpe")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_321ql")]
+position = Vector2(85, 579)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfhcrglk7orcb"]
+[gd_scene load_steps=11 format=3 uid="uid://bfhcrglk7orcb"]
 
 [ext_resource type="Script" uid="uid://h2resi86j2ko" path="res://Scenes/zombie_attack_line.gd" id="1_u854o"]
 [ext_resource type="Script" uid="uid://hu7ap6jeypdr" path="res://Scenes/spawn_line.gd" id="2_05ttr"]
+[ext_resource type="Texture2D" uid="uid://dlxf8inqkxo8s" path="res://Assets/backgrounds/groundsmall.png" id="2_wcgpt"]
 [ext_resource type="PackedScene" uid="uid://dkee7jpjl0upb" path="res://Scenes/Enemies/zombie.tscn" id="3_e7vvl"]
 [ext_resource type="Script" uid="uid://cgb675jtr2d2" path="res://Scenes/damage_area.gd" id="4_uki52"]
 
@@ -12,8 +13,24 @@ b = Vector2(1100, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u854o"]
 size = Vector2(1152, 50)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uki52"]
+b = Vector2(1200, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wcgpt"]
+b = Vector2(0, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f8h1"]
+size = Vector2(50, 150)
+
 [node name="ZombieAttackLine" type="Node2D"]
 script = ExtResource("1_u854o")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1274.0
+offset_bottom = 701.0
+texture = ExtResource("2_wcgpt")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="SpawnLine" type="Area2D" parent="."]
 position = Vector2(0, -100)
@@ -34,5 +51,33 @@ script = ExtResource("4_uki52")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(576, 0)
 shape = SubResource("RectangleShape2D_u854o")
+
+[node name="Zombie attack cam" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player Boundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Boundaries"]
+position = Vector2(0, 648)
+shape = SubResource("SegmentShape2D_uki52")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player Boundaries"]
+position = Vector2(0, 499)
+shape = SubResource("SegmentShape2D_uki52")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Player Boundaries"]
+position = Vector2(0, 500)
+shape = SubResource("SegmentShape2D_wcgpt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Player Boundaries"]
+position = Vector2(1200, 500)
+shape = SubResource("SegmentShape2D_wcgpt")
+
+[node name="Location change zone" type="Area2D" parent="."]
+position = Vector2(1152, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Location change zone"]
+position = Vector2(26, 74)
+shape = SubResource("RectangleShape2D_6f8h1")
 
 [connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
