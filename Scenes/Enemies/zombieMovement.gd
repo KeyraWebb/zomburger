@@ -5,17 +5,21 @@ extends CharacterBody2D
 @export var baseSpeed = 100
 @export var attack = 1
 @export var attackSpeed = 1
+@export var baseHealth = 10
 
 @onready var gameManager = $"../../.."
 
 var currSpeed
 var attacking = false
 var attackTimer
+var currHealth
+
 
 
 func _ready() -> void:
 	#when begin, move down the screen
 	currSpeed = baseSpeed
+	currHealth = baseHealth
 
 func _process(delta: float) -> void:
 	
@@ -35,4 +39,9 @@ func Attack():
 	attacking = true
 	currSpeed = 0
 	attackTimer = attackSpeed
+	
+func Hit(damage):
+	currHealth -= damage
+	if currHealth <= 0:
+		self.queue_free()
 	

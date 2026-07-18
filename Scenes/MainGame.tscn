@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1cf1hvum4cob"]
+[gd_scene format=3 uid="uid://b1cf1hvum4cob"]
 
 [ext_resource type="Script" uid="uid://bhyg3jpuk8hs2" path="res://Scenes/GameManager.gd" id="1_frf35"]
 [ext_resource type="PackedScene" uid="uid://copovl7ccbv4v" path="res://Scenes/Menus/pause.tscn" id="2_ybmw1"]
@@ -6,24 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://ds466oxc4yvei" path="res://Scenes/Menus/game_over.tscn" id="3_321ql"]
 [ext_resource type="PackedScene" uid="uid://dffnwqbd5w7ni" path="res://Scenes/Player.tscn" id="5_321ql"]
 
-[node name="MainGame" type="Node2D"]
+[node name="MainGame" type="Node2D" unique_id=1429421265]
 script = ExtResource("1_frf35")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357475007]
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1019167333]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 320.0
 offset_bottom = 47.0
 
-[node name="Pause" parent="CanvasLayer" instance=ExtResource("2_ybmw1")]
+[node name="Pause" parent="CanvasLayer" unique_id=473779842 instance=ExtResource("2_ybmw1")]
 visible = false
 
-[node name="GameOver" parent="CanvasLayer" instance=ExtResource("3_321ql")]
+[node name="GameOver" parent="CanvasLayer" unique_id=1234635828 instance=ExtResource("3_321ql")]
 visible = false
 
-[node name="ZombieAttackLine" parent="." instance=ExtResource("2_yprpe")]
+[node name="ZombieAttackLine" parent="." unique_id=693584589 instance=ExtResource("2_yprpe")]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_321ql")]
+[node name="CharacterBody2D" parent="." unique_id=428892269 instance=ExtResource("5_321ql")]
 position = Vector2(85, 579)
+
+[node name="Bullet house" type="Node2D" parent="." unique_id=1852870464]
