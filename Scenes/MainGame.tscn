@@ -34,4 +34,4 @@ position = Vector2(85, 579)
 [node name="Bullet house" type="Node2D" parent="." unique_id=1852870464]
 
 [node name="diner" parent="." unique_id=2018764177 instance=ExtResource("6_d4f28")]
-position = Vector2(2876, 323)
+position = Vector2(2300, 0)
