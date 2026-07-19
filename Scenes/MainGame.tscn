@@ -5,9 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bfhcrglk7orcb" path="res://Scenes/zombie_attack_line.tscn" id="2_yprpe"]
 [ext_resource type="PackedScene" uid="uid://ds466oxc4yvei" path="res://Scenes/Menus/game_over.tscn" id="3_321ql"]
 [ext_resource type="PackedScene" uid="uid://dffnwqbd5w7ni" path="res://Scenes/Player.tscn" id="5_321ql"]
+[ext_resource type="PackedScene" uid="uid://bcc88t2d5oi27" path="res://Scenes/diner.tscn" id="6_d4f28"]
 
-[node name="MainGame" type="Node2D" unique_id=1429421265]
+[node name="MainGame" type="Node2D" unique_id=1429421265 node_paths=PackedStringArray("zombieScene", "dinerScene")]
 script = ExtResource("1_frf35")
+zombieScene = NodePath("ZombieAttackLine")
+dinerScene = NodePath("diner")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357475007]
 
@@ -29,3 +32,6 @@ visible = false
 position = Vector2(85, 579)
 
 [node name="Bullet house" type="Node2D" parent="." unique_id=1852870464]
+
+[node name="diner" parent="." unique_id=2018764177 instance=ExtResource("6_d4f28")]
+position = Vector2(2876, 323)

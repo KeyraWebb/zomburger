@@ -6,8 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpqav"]
 radius = 31.016125
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1299512758]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1299512758 node_paths=PackedStringArray("zombieCam", "dinerCam")]
+collision_layer = 5
 script = ExtResource("1_kyqiw")
+zombieCam = NodePath("ZombieCam")
+dinerCam = NodePath("DinerCam")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=892272759]
 scale = Vector2(0.5, 0.5)
@@ -15,3 +18,15 @@ texture = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=598725274]
 shape = SubResource("CircleShape2D_rpqav")
+
+[node name="ZombieCam" type="Camera2D" parent="." unique_id=1860086830]
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+
+[node name="DinerCam" type="Camera2D" parent="." unique_id=422565748]
+limit_left = 2300
+limit_top = 0
+limit_right = 3452
+limit_bottom = 648

@@ -3,6 +3,8 @@ extends Node2D
 @onready var damageAreaShape = $DamageArea/CollisionShape2D
 @onready var damageArea = $DamageArea
 
+@export var spawnPos : Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#UpdateAreaSizes()
@@ -24,3 +26,7 @@ func UpdateAreaSizes():
 	print(yLength - damageAreaShape.shape.size.y)
 	damageArea.transform = Vector2(damageArea.transform.x, yLength - damageAreaShape.shape.size.y) 
 	Vector2()
+
+
+func _on_location_change_zone_body_entered(body: Node2D) -> void:
+	body.switchCam("diner")

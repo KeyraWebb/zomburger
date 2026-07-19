@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://bcc88t2d5oi27"]
 
-[node name="diner" type="Node2D"]
+[ext_resource type="Script" uid="uid://dtk7wasgrmn6v" path="res://Scenes/diner.gd" id="1_2p1rj"]
 
-[node name="Diner cam" type="Camera2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8h8"]
+size = Vector2(29, 95)
+
+[node name="diner" type="Node2D" unique_id=267898665 node_paths=PackedStringArray("spawnPos")]
+script = ExtResource("1_2p1rj")
+spawnPos = NodePath("SpawnPos")
+
+[node name="SpawnPos" type="Node2D" parent="." unique_id=1295305899]
+position = Vector2(36, 41)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1068237944]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=586049713]
+position = Vector2(-14.5, 47.5)
+shape = SubResource("RectangleShape2D_uc8h8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

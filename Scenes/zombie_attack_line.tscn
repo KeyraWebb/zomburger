@@ -22,8 +22,9 @@ b = Vector2(0, 150)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6f8h1"]
 size = Vector2(50, 150)
 
-[node name="ZombieAttackLine" type="Node2D" unique_id=1331748097]
+[node name="ZombieAttackLine" type="Node2D" unique_id=1331748097 node_paths=PackedStringArray("spawnPos")]
 script = ExtResource("1_u854o")
+spawnPos = NodePath("SpawnPos")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=532585800]
 offset_right = 1274.0
@@ -52,9 +53,6 @@ script = ExtResource("4_uki52")
 position = Vector2(576, 0)
 shape = SubResource("RectangleShape2D_u854o")
 
-[node name="Zombie attack cam" type="Camera2D" parent="." unique_id=362724987]
-anchor_mode = 0
-
 [node name="Player Boundaries" type="StaticBody2D" parent="." unique_id=1526509389]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Boundaries" unique_id=1875447112]
@@ -75,9 +73,15 @@ shape = SubResource("SegmentShape2D_wcgpt")
 
 [node name="Location change zone" type="Area2D" parent="." unique_id=1782301161]
 position = Vector2(1152, 500)
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Location change zone" unique_id=1076887784]
 position = Vector2(26, 74)
 shape = SubResource("RectangleShape2D_6f8h1")
 
+[node name="SpawnPos" type="Node2D" parent="." unique_id=1613829850]
+position = Vector2(1116, 588)
+
 [connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Location change zone" to="." method="_on_location_change_zone_body_entered"]

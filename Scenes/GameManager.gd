@@ -3,10 +3,13 @@
 extends Node2D
 
 @export var maxHealth = 100
+@export var zombieScene : Node2D
+@export var dinerScene : Node2D
 
 @onready var healthBar = $CanvasLayer/HealthBar
 @onready var gameOverMenu = $CanvasLayer/GameOver
 @onready var pauseMenu = $CanvasLayer/Pause
+
 
 var health
 var gameOver
@@ -28,3 +31,6 @@ func GameOver():
 	gameOver = true
 	gameOverMenu.visible = true
 	get_tree().paused = true
+	
+func SwitchArea():
+	pass
