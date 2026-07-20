@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://bcc88t2d5oi27"]
+[gd_scene format=4 uid="uid://bcc88t2d5oi27"]
 
 [ext_resource type="Script" uid="uid://dtk7wasgrmn6v" path="res://Scenes/diner.gd" id="1_2p1rj"]
+[ext_resource type="TileSet" uid="uid://d3e4dg3kkdb52" path="res://Assets/Tilesets/dinerTiles.tres" id="2_lwn67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8h8"]
 size = Vector2(29, 95)
@@ -9,13 +10,27 @@ size = Vector2(29, 95)
 script = ExtResource("1_2p1rj")
 spawnPos = NodePath("SpawnPos")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=556967691]
+z_index = -500
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAGAAYAAQASABgAAAATAAYAAQASABgAAAAgAAYAAQASABgAAAAGABMAAQASABgAAAATABMAAQASABgAAAAgABMAAQASABgAAAAGACAAAQASABgAAAATACAAAQASABgAAAAgACAAAQASABgAAAABAP7/AQAfABgAAAADAP7/AQAiABgAAAAEAP7/AQAiABgAAAAFAP7/AQAiABgAAAAGAP7/AQAiABgAAAAHAP7/AQAiABgAAAAIAP7/AQAiABgAAAAJAP7/AQAiABgAAAAKAP7/AQAiABgAAAALAP7/AQAiABgAAAAMAP7/AQAiABgAAAANAP7/AQAiABgAAAAOAP7/AQAiABgAAAAPAP7/AQAiABgAAAAQAP7/AQAiABgAAAARAP7/AQAiABgAAAASAP7/AQAiABgAAAATAP7/AQAiABgAAAAUAP7/AQAiABgAAAAVAP7/AQAiABgAAAAWAP7/AQAiABgAAAAXAP7/AQAiABgAAAAYAP7/AQAiABgAAAAZAP7/AQAiABgAAAAaAP7/AQAiABgAAAAbAP7/AQAiABgAAAAcAP7/AQAiABgAAAAdAP7/AQAiABgAAAAeAP7/AQAiABgAAAAfAP7/AQAiABgAAAAgAP7/AQAiABgAAAAhAP7/AQAiABgAAAAiAP7/AQAiABgAAAAlAP7/AQAkABgAAAAjAP7/AQAiABgAAAAQAAwAAQAWAA4AAAA=")
+tile_set = ExtResource("2_lwn67")
+
 [node name="SpawnPos" type="Node2D" parent="." unique_id=1295305899]
 position = Vector2(36, 41)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1068237944]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=586049713]
 position = Vector2(-14.5, 47.5)
 shape = SubResource("RectangleShape2D_uc8h8")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1204146347]
+position = Vector2(-10, 0)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAABAAcAAQAeAA8AAAADAAcAAQAgAA8AAAAFAAcAAQAgAA8AAAAIAAcAAQAYAAsAAAALAAcAAQAgAA8AAAANAAcAAQAiAA8AAAA=")
+tile_set = ExtResource("2_lwn67")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

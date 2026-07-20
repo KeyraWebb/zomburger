@@ -27,6 +27,6 @@ limit_bottom = 648
 
 [node name="DinerCam" type="Camera2D" parent="." unique_id=422565748]
 limit_left = 2300
-limit_top = 0
+limit_top = -100
 limit_right = 3452
 limit_bottom = 648
