@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dlxf8inqkxo8s" path="res://Assets/backgrounds/groundsmall.png" id="2_wcgpt"]
 [ext_resource type="PackedScene" uid="uid://dkee7jpjl0upb" path="res://Scenes/Enemies/zombie.tscn" id="3_e7vvl"]
 [ext_resource type="Script" uid="uid://cgb675jtr2d2" path="res://Scenes/damage_area.gd" id="4_uki52"]
+[ext_resource type="PackedScene" uid="uid://52fkv42x4vt0" path="res://Scenes/Objects/tower.tscn" id="6_6f8h1"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pwvwa"]
 a = Vector2(50, 0)
@@ -21,6 +22,12 @@ b = Vector2(0, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6f8h1"]
 size = Vector2(50, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8h8"]
+size = Vector2(1341, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an8jd"]
+size = Vector2(73, 886.5)
 
 [node name="ZombieAttackLine" type="Node2D" unique_id=1331748097 node_paths=PackedStringArray("spawnPos")]
 script = ExtResource("1_u854o")
@@ -83,5 +90,32 @@ shape = SubResource("RectangleShape2D_6f8h1")
 [node name="SpawnPos" type="Node2D" parent="." unique_id=1613829850]
 position = Vector2(1116, 588)
 
+[node name="Tower" parent="." unique_id=1821201074 instance=ExtResource("6_6f8h1")]
+position = Vector2(41, 491)
+
+[node name="Tower2" parent="." unique_id=104968494 instance=ExtResource("6_6f8h1")]
+position = Vector2(568, 488)
+
+[node name="Tower3" parent="." unique_id=194325628 instance=ExtResource("6_6f8h1")]
+position = Vector2(1122, 500)
+
+[node name="BulletDespawn" type="Area2D" parent="." unique_id=1048187144]
+position = Vector2(-33, -733)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDespawn" unique_id=947856283]
+position = Vector2(593, -246)
+shape = SubResource("RectangleShape2D_uc8h8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletDespawn" unique_id=1983252188]
+position = Vector2(-114.5, 241.75)
+shape = SubResource("RectangleShape2D_an8jd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BulletDespawn" unique_id=350552300]
+position = Vector2(1300, 241.75)
+shape = SubResource("RectangleShape2D_an8jd")
+
 [connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Location change zone" to="." method="_on_location_change_zone_body_entered"]
+[connection signal="body_entered" from="BulletDespawn" to="." method="_on_bullet_despawn_body_entered"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dxiyi748rgjka"]
+
+[ext_resource type="Script" uid="uid://c0xbm3g65hqm8" path="res://Scenes/Objects/tower_bullet.gd" id="1_ywgjw"]
+[ext_resource type="Texture2D" uid="uid://1420o23pjpme" path="res://icon.svg" id="2_klf1g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uc8h8"]
+radius = 7.0
+
+[node name="TowerBullet" type="AnimatableBody2D" unique_id=1526862289]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ywgjw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252682848]
+shape = SubResource("CircleShape2D_uc8h8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1259958507]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_klf1g")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2085219117]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=521068473]
+shape = SubResource("CircleShape2D_uc8h8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

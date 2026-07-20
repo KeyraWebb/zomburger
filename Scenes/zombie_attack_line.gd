@@ -27,6 +27,8 @@ func UpdateAreaSizes():
 	damageArea.transform = Vector2(damageArea.transform.x, yLength - damageAreaShape.shape.size.y) 
 	Vector2()
 
-
 func _on_location_change_zone_body_entered(body: Node2D) -> void:
 	body.switchCam("diner")
+
+func _on_bullet_despawn_body_entered(body: Node2D) -> void:
+	body.queue_free()
