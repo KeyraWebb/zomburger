@@ -2,9 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dtk7wasgrmn6v" path="res://Scenes/diner.gd" id="1_2p1rj"]
 [ext_resource type="TileSet" uid="uid://d3e4dg3kkdb52" path="res://Assets/Tilesets/dinerTiles.tres" id="2_lwn67"]
+[ext_resource type="Script" uid="uid://bu5h7fed236qq" path="res://Scenes/dinerHud.gd" id="3_jla63"]
+[ext_resource type="Theme" uid="uid://brn45uia7bj2s" path="res://Themes/Menu Theme.tres" id="3_k4132"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8h8"]
 size = Vector2(29, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ylbo"]
+size = Vector2(213, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j760h"]
+size = Vector2(145, 73.5)
 
 [node name="diner" type="Node2D" unique_id=267898665 node_paths=PackedStringArray("spawnPos")]
 script = ExtResource("1_2p1rj")
@@ -19,11 +27,11 @@ tile_set = ExtResource("2_lwn67")
 [node name="SpawnPos" type="Node2D" parent="." unique_id=1295305899]
 position = Vector2(36, 41)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1068237944]
+[node name="Door" type="Area2D" parent="." unique_id=1068237944]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=586049713]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=586049713]
 position = Vector2(-14.5, 47.5)
 shape = SubResource("RectangleShape2D_uc8h8")
 
@@ -33,4 +41,65 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABAAcAAQAeAA8AAAADAAcAAQAgAA8AAAAFAAcAAQAgAA8AAAAIAAcAAQAYAAsAAAALAAcAAQAgAA8AAAANAAcAAQAiAA8AAAA=")
 tile_set = ExtResource("2_lwn67")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="OrderZone" type="Area2D" parent="." unique_id=905144788]
+position = Vector2(105, 213)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderZone" unique_id=1848618175]
+position = Vector2(8.5, -18)
+shape = SubResource("RectangleShape2D_1ylbo")
+
+[node name="ServeZone" type="Area2D" parent="." unique_id=979095352]
+position = Vector2(375, 209)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ServeZone" unique_id=193838207]
+position = Vector2(4, -16)
+shape = SubResource("RectangleShape2D_j760h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1425395893]
+script = ExtResource("3_jla63")
+
+[node name="orderToolTip" type="Label" parent="CanvasLayer" unique_id=540667202]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -37.0
+offset_right = -20.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("3_k4132")
+theme_override_font_sizes/font_size = 60
+text = "E to Take Order"
+
+[node name="serveToolTip" type="Label" parent="CanvasLayer" unique_id=517091607]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -37.0
+offset_right = -20.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_k4132")
+theme_override_font_sizes/font_size = 60
+text = "E to Serve"
+
+[connection signal="body_entered" from="Door" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="OrderZone" to="CanvasLayer" method="_on_order_zone_body_entered"]
+[connection signal="body_exited" from="OrderZone" to="CanvasLayer" method="_on_order_zone_body_exited"]
+[connection signal="body_entered" from="ServeZone" to="CanvasLayer" method="_on_serve_zone_body_entered"]
+[connection signal="body_exited" from="ServeZone" to="CanvasLayer" method="_on_serve_zone_body_exited"]
