@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://t7a65mm41jh2"]
 
 [ext_resource type="Script" uid="uid://2reymkfl3ldm" path="res://Scenes/Objects/bullet.gd" id="1_nl5gi"]
-[ext_resource type="Texture2D" uid="uid://1420o23pjpme" path="res://icon.svg" id="1_ss5a3"]
+[ext_resource type="Texture2D" uid="uid://b26qedufkg1e" path="res://Assets/Sprites/arrow.png" id="2_nl5gi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8h8"]
-size = Vector2(12, 12)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nl5gi"]
+radius = 4.715328
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82osk"]
+radius = 4.7509117
+height = 26.0
 
 [node name="Bullet" type="AnimatableBody2D" unique_id=113293885]
 collision_layer = 8
@@ -12,17 +17,19 @@ collision_mask = 0
 script = ExtResource("1_nl5gi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1737327771]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_ss5a3")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_nl5gi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=681550245]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=788277296]
-shape = SubResource("RectangleShape2D_uc8h8")
+position = Vector2(0.28467178, 0)
+shape = SubResource("CapsuleShape2D_nl5gi")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=187716744]
-shape = SubResource("RectangleShape2D_uc8h8")
+position = Vector2(0.24908829, 0)
+shape = SubResource("CapsuleShape2D_82osk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
